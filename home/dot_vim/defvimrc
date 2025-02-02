@@ -1,0 +1,69 @@
+" Leader key
+nnoremap <SPACE> <Nop>
+let mapleader = " "
+
+
+" General Settings
+set clipboard+=unnamedplus      " Use system clipboard by default
+set number                      " Show current line number on cursor's line
+set relativenumber              " Use relative numbers
+set hls                         " Enable search highlighting
+set showcmd                     " Show (partial) command in status line
+set showmatch                   " Show matching brackets
+set ignorecase                  " Do case insensitive matching
+set smartcase                   " Do smart case matching
+set incsearch                   " Incremental search
+set mouse=a                     " Enable mouse usage (all modes)
+
+
+" Mapping Special characters of the Finnish/Swedish keyboard layout
+" To resemble the English layout in normal mode.
+noremap § `
+noremap ½ ~
+noremap " @
+noremap ¤ $
+noremap & ^
+noremap / &
+noremap ( *
+noremap ) (
+noremap = )
+noremap ? _
+noremap ` +
+noremap å [
+noremap Å {
+noremap ¨ ]
+noremap ^ }
+noremap ö ;
+noremap Ö :
+noremap ä '
+noremap Ä "
+noremap ' \\
+noremap * \|
+noremap ; <
+noremap : >
+noremap - /
+noremap _ ?
+
+
+" Other mappings
+" Macro improvements
+nnoremap Q @q
+
+" Window navigation
+nnoremap <C-w>v :vsplit<CR>
+nnoremap <C-w>x :split<CR>
+nnoremap <C-h> <c-w>h
+nnoremap <C-l> <c-w>l
+nnoremap <C-j> <c-w>j
+nnoremap <C-k> <c-w>k
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+
+" Tab navigation
+nnoremap H gT
+nnoremap L gt
+nnoremap <Leader>tn :tabnew<CR>
+nnoremap <Leader>tc :tabclose<CR>
+
+" Clear highlights
+nnoremap <silent> <ESC> <ESC>:nohlsearch<CR> 

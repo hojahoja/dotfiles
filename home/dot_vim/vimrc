@@ -1,0 +1,107 @@
+" Load defaults
+unlet! skip_defaults_vim
+source $VIMRUNTIME/defaults.vim
+
+runtime! archlinux.vim
+runtime! debian.vim
+
+source ~/.vim/defvimrc " Shared settings between vim and different IDE Vim plugins.
+
+
+" Vim Specific Settings
+set noshowmode                  " Showmode is redundant with current statusline
+set hidden                      " Hide buffers when they are abandoned
+set laststatus=2                " Enable statusline
+set ts=4 sw=4 sts=-1            " Set tabstop and shiftwidth to 4 set softabstop to same value as ts
+set expandtab                   " Insert spaces instead of tab
+set ruler                       " Show cursor position.
+set wildmenu                    " Display completion matches in a status line
+set autoread                    " If vim detects a file change it will read the file again
+set autoindent                  " To have some form of autoindent always available
+
+" Cursor shape change on mode shift
+let &t_SI = "\e[6 q"            " Solid vertical cursor in insert mode
+let &t_SR = "\e[4 q"            " Solid underscore cursor in insert mode
+let &t_EI = "\e[2 q"            " Solid block cursor in insert mode
+
+" Change search highlight color
+hi Search cterm=NONE ctermfg=White ctermbg=DarkCyan
+
+
+" Useful bindings
+" Save
+noremap <silent> <C-S>          :update<CR>
+vnoremap <silent> <C-S>         <C-C>:update<CR>
+inoremap <silent> <C-S>         <C-O>:update<CR>
+
+" Buffer navigation
+nnoremap <Leader><Leader> :ls<CR>:b<Space>
+
+" Clear search highlight
+nnoremap <silent> <ESC> <ESC>:silent nohlsearch<CR>
+
+
+" Statusline setup
+" Define color highlight groups for statusline
+hi BufferAndFiles ctermbg=DarkBlue
+hi ModeShift ctermfg=Black ctermbg=Blue
+hi FileSpecs ctermfg=Black ctermbg=Grey
+hi MiddleBar ctermfg=White ctermbg=DarkGrey
+hi InactiveWindow ctermfg=LightGrey ctermbg=DarkGrey
+
+" Function to return the current mode indicator
+" and to change highlight colors for mode shifts
+function! ModeIndicator()
+    let l:mode = mode()
+
+    if l:mode ==# 'i'
+        execute 'hi ModeShift ctermbg=LightGreen'
+        return 'INSERT'
+    elseif l:mode ==# 'R'
+        execute 'hi ModeShift ctermbg=Brown'
+        return 'REPLACE'
+    elseif l:mode ==# 'v'
+        execute 'hi ModeShift ctermbg=DarkMagenta'
+        return 'VISUAL'
+    elseif l:mode ==# 'V'
+        execute 'hi ModeShift ctermbg=DarkMagenta'
+        return 'V-LINE'
+    elseif l:mode ==# "\<C-v>"
+        execute 'hi ModeShift ctermbg=DarkMagenta'
+        return 'V-BLOCK'
+    elseif l:mode ==# 'c'
+        execute 'hi ModeShift ctermbg=DarkYellow'
+        return 'COMMAND'
+    else
+        execute 'hi ModeShift ctermbg=Blue'
+        return 'NORMAL'
+    endif
+endfunction
+
+" Set the statusline of active window
+function! SetActiveStatusline()
+    setlocal statusline=
+    setlocal statusline+=%#ModeShift#\ %{ModeIndicator()}\    " Current mode
+    setlocal statusline+=%#BufferAndFiles#\ Buffer\ [%n]\     " Buffer number
+    setlocal statusline+=%#BufferAndFiles#\ %m%r%w\           " Modified, readonly, and preview flags
+    setlocal statusline+=%#MiddleBar#\ %<%F\                  " File path
+    setlocal statusline+=%=%#FileSpecs#\ %{&ff}\              " File format
+    setlocal statusline+=%#FileSpecs#\ %{&fenc!=#''?&fenc:&enc}\ " Encoding
+    setlocal statusline+=%#BufferAndFiles#\ %y\               " File type
+    setlocal statusline+=%#ModeShift#\ %l:%c\                 " Line, column, virtual column
+    setlocal statusline+=%#ModeShift#\ %P\                    " Percentage through file
+endfunction
+
+call SetActiveStatusline()
+
+" Autocommands
+if has ("autocmd")
+    " Change the statusline for active and inactive windows
+    augroup ShiftStatusLine
+        autocmd!
+        autocmd WinEnter * call SetActiveStatusline()
+        autocmd BufEnter * call SetActiveStatusline()
+        autocmd WinLeave * setlocal statusline=%#InactiveWindow#\ %<%F\      " File path
+    augroup END
+endif
+
