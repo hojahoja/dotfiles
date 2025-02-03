@@ -4,6 +4,12 @@
     url = "git@github.com:hojahoja/kickstart-modular.nvim.git"
     refreshPeriod = "168h"
 {{- end }}
+{{- if eq .chezmoi.os "windows" }}
+["Appdata/Local/nvim"]
+    type = "git-repo"
+    url = "https://github.com/hojahoja/kickstart-modular.nvim.git"
+    refreshPeriod = "168h"
+{{- end }}
 [".vim/pack/tpope/start/surround/plugin/surround.vim"]
     type = "file"
     url = "https://raw.githubusercontent.com/tpope/vim-surround/refs/heads/master/plugin/surround.vim"
