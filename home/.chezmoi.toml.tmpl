@@ -1,0 +1,7 @@
+{{- if eq .chezmoi.os "windows" }}
+[edit]
+    command = "nvim"
+[merge]
+    command = "nvim"
+    args = ["-d", "{{"{{ .Destination }}"}}", "{{"{{ .Source }}"}}", "{{"{{ .Target }}"}}"]
+{{- end }}
