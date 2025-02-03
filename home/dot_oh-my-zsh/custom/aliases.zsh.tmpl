@@ -1,11 +1,25 @@
 alias sudo='sudo ' # Trailing space enables aliases to work with sudo
 alias ff='fastfetch'
-alias ffs='fastfetch -c neofetch -l arch_small' # Defaut seting for small screens.
+alias ffs='fastfetch -c neofetch -l arch_small' # Default setting for small screens.
 alias filez='du -sh * | sort -n'
-alias vat='bat -pp'
+alias vat='bat -pp' # Display file with syntax highlighting
+# Chezmoi shortcuts
+alias che='chezmoi'
+alias chez='chezmoi'
+alias ches='chezmoi status'
+alias ched='chezmoi diff'
+alias chee='chezmoi edit'
+alias cheew='chezmoi edit --watch'
+alias cheea='chezmoi edit --apply'
+alias chea='chezmoi apply'
+alias checd='chezmoi cd'
+{{- if eq .chezmoi.osRelease.idLike "debian"}}
+# Debian specific
+alias bat='batcat'
+{{- end }}
 # Arch specific:
 # The next two work on arch because passwordless
-# has been enabled in wheel group for them specficially.
+# has been enabled in wheel group for them specifically.
 alias reboot='sudo reboot'
 alias poweroff='sudo poweroff'
 #Quick alternative to pacdiff -f
