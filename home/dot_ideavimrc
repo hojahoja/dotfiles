@@ -1,0 +1,88 @@
+" Load shared default settings
+source ~/.vim/defvimrc  
+
+
+" IdeaVim specific settings
+set ideajoin
+set idearefactormode=keep
+set clipboard+=ideaput
+
+
+" IdeaVim specific bindings
+nnoremap <Leader>sf :action GotoFile<CR>
+nnoremap <leader>f :action ReformatCode<CR>
+nnoremap <C-w>v :action SplitVertically<CR>
+nnoremap <C-w>x :action SplitHorizontally<CR>
+
+
+" Plugins
+" Which-key (Too clunky for now)
+" set which-key
+" set notimeout "Which key works better alt: set timeoutlen = 5000 (default : 1000)
+
+
+" Ace Jump
+" Press `f` to activate AceJump
+map s <Action>(AceAction)
+" Press `F` to activate Target Mode
+map S <Action>(AceTargetAction)
+" Press `g` to activate Line Mode
+"
+" Additional binding options for AceJump
+" map g <Action>(AceLineAction)AceJump Settings
+" Press `F` in normal mode to activate AceJump mode before the caret
+" nmap F <Action>(AceBackwardAction)
+" Press `f` in normal mode to activate AceJump mode after the caret
+" nmap f <Action>(AceForwardAction)
+
+
+" Surround
+Plug 'tpope/vim-surround'
+" ys [Y]ou [S]urround
+" ds [D]elete [S]urrounding
+" cs [C]hange [S]urrounding
+
+
+" Indent-object
+Plug 'michaeljsmith/vim-indent-object'
+" <count>ai around indentation"
+" <count>ii inside indentation"
+" <count>aI around indentation + next line"
+
+
+" Multi-cursor
+Plug 'terryma/vim-multiple-cursors'
+nmap <leader>n <Plug>NextWholeOccurrence
+xmap <leader>n <Plug>NextWholeOccurrence
+nmap <leader>gn <Plug>NextOccurrence
+xmap <leader>gn <Plug>NextOccurrence
+xmap <leader>m <Plug>SkipOccurrence
+xmap <leader>x <Plug>RemoveOccurrence
+nmap <leader>a <Plug>AllWholeOccurrences
+xmap <leader>a <Plug>AllWholeOccurrences
+nmap <leader>ga <Plug>AllOccurrences
+xmap <leader>ga <Plug>AllOccurrences
+
+
+" Commentary
+Plug 'tpope/vim-commentary'
+" gc Go [C]omment (operator pending)
+" gcc Go [C]omment [C]ount lines
+" gcgc Un[C]omment all adjacent lines
+
+
+" Nerdtree
+Plug 'preservim/nerdtree' " IDE's native explorer panel with KB
+nnoremap * :NERDTreeToggle<CR>
+xnoremap * :NERDTreeToggle<CR>
+
+
+" Highlightedyank
+Plug 'machakann/vim-highlightedyank'
+"If you want to optimize highlight duration, assign a time in milliseconds:
+let g:highlightedyank_highlight_duration = "200"
+"A negative number makes the highlight persistent.
+
+"If you want to change background color of highlight you can provide the rgba of the color you want e.g.
+"let g:highlightedyank_highlight_color = "rgba(160, 160, 160, 155)"
+

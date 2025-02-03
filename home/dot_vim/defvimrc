@@ -14,6 +14,15 @@ set ignorecase                  " Do case insensitive matching
 set smartcase                   " Do smart case matching
 set incsearch                   " Incremental search
 set mouse=a                     " Enable mouse usage (all modes)
+set ttimeout                    " Shorten timeout for more responsive controls
+set ttimeoutlen=100
+set nrformats-=octal            " Remove octals from increments and decs.
+set display+=lastline
+set display+=truncate
+
+if &compatible
+  set nocompatible
+endif
 
 
 " Mapping Special characters of the Finnish/Swedish keyboard layout

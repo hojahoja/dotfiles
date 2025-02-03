@@ -7,12 +7,22 @@ runtime! debian.vim
 
 source ~/.vim/defvimrc " Shared settings between vim and different IDE Vim plugins.
 
+" Turn on syntax highlighting and filetype plugin.
+if !(exists('g:did_load_filetypes') && exists('g:did_load_ftplugin') && exists('g:did_indent_on'))
+  filetype plugin indent on
+endif
+if has('syntax') && !exists('g:syntax_on')
+  syntax enable
+endif
+
 
 " Vim Specific Settings
 set noshowmode                  " Showmode is redundant with current statusline
 set hidden                      " Hide buffers when they are abandoned
 set laststatus=2                " Enable statusline
 set ts=4 sw=4 sts=-1            " Set tabstop and shiftwidth to 4 set softabstop to same value as ts
+set backspace=indent,eol,start  " Makes backspace more intuitive.
+set smarttab                    " Makes tab more intuitive
 set expandtab                   " Insert spaces instead of tab
 set ruler                       " Show cursor position.
 set wildmenu                    " Display completion matches in a status line
