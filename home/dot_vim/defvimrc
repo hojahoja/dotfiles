@@ -4,7 +4,7 @@ let mapleader = " "
 
 
 " General Settings
-set clipboard+=unnamedplus      " Use system clipboard by default
+set clipboard^=unnamedplus      " Use system clipboard by default
 set number                      " Show current line number on cursor's line
 set relativenumber              " Use relative numbers
 set hls                         " Enable search highlighting
@@ -16,7 +16,7 @@ set incsearch                   " Incremental search
 set mouse=a                     " Enable mouse usage (all modes)
 set ttimeout                    " Shorten timeout for more responsive controls
 set ttimeoutlen=100
-set nrformats-=octal            " Remove octals from increments and decs.
+set nrformats-=octal            " Remove octals from increments and decrements.
 set display+=lastline
 set display+=truncate
 
@@ -57,6 +57,10 @@ noremap _ ?
 " Other mappings
 " Macro improvements
 nnoremap Q @q
+
+" Unnamed register so won't get overwritten by system clipboard
+nnoremap <Leader>y ""y
+nnoremap <Leader>p ""p
 
 " Window navigation
 nnoremap <C-w>v :vsplit<CR>
