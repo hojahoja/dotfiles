@@ -13,11 +13,11 @@ alias cheew='chezmoi edit --watch'
 alias cheea='chezmoi edit --apply'
 alias chea='chezmoi apply'
 alias checd='chezmoi cd'
-{{- if eq .chezmoi.osRelease.idLike "debian"}}
-# Debian specific
+{{- if eq .chezmoi.osRelease.id "ubuntu"}}
+# Ubuntu specific
 alias bat='batcat'
 {{- end }}
-# Arch specific:
+{{- if eq .chezmoi.osRelease.id "arch"}}
 # The next two work on arch because passwordless
 # has been enabled in wheel group for them specifically.
 alias reboot='sudo reboot'
@@ -30,4 +30,4 @@ alias orphans='pacman -Qtdq'
 alias bootcrit='sudo dmesg --level=crit+'
 # Quick command for for a pretty list for 20 latest commits of VCS /etc Folder
 alias etclog='sudo git -C /etc log -20 --pretty="format:%C(yellow)%h %Cblue%>(12)%ad %Cgreen%<(7)%aN%Cred%d %Creset%s"'
-# Arch specific end
+{{- end }}

@@ -36,6 +36,7 @@ chezmoi init --apply hojahoja
 - `chezmoi managed` - Shows whether target file or folder is managed by chezmoi. Defaults to `$HOME`
 - `chezmoi unmanaged` - Exact opposite of the previous command.
 - `chezmoi data` - List all chezmoi variables.
+- `chezmoi execute-template < $FILE` - see how the template would look like before applying it.
 
 ## Neovim
 

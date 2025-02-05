@@ -5,7 +5,8 @@
 .oh-my-zsh/**
 {{- end }}
 {{- if eq .chezmoi.os "linux" }}
-{{-     if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
 .ideavimrc
+{{-     if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
+# WSL specific ignores here.
 {{-     end }}
 {{- end }}
