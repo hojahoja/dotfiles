@@ -58,7 +58,8 @@ noremap _ ?
 " Macro improvements
 nnoremap Q @q
 
-" Unnamed register so won't get overwritten by system clipboard
+" Unnamed register won't get overwritten by system clipboard
+" when it's only set to unnamedplus.
 nnoremap <Leader>y ""y
 nnoremap <Leader>p ""p
 

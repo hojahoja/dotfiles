@@ -31,8 +31,8 @@ set autoindent                  " To have some form of autoindent always availab
 
 " Cursor shape change on mode shift
 let &t_SI = "\e[6 q"            " Solid vertical cursor in insert mode
-let &t_SR = "\e[4 q"            " Solid underscore cursor in insert mode
-let &t_EI = "\e[2 q"            " Solid block cursor in insert mode
+let &t_SR = "\e[4 q"            " Solid underscore cursor in replace mode
+let &t_EI = "\e[2 q"            " Solid block cursor in normal and others modes
 
 " Change search highlight color
 hi Search cterm=NONE ctermfg=White ctermbg=DarkCyan
@@ -91,15 +91,15 @@ endfunction
 " Set the statusline of active window
 function! SetActiveStatusline()
     setlocal statusline=
-    setlocal statusline+=%#ModeShift#\ %{ModeIndicator()}\    " Current mode
-    setlocal statusline+=%#BufferAndFiles#\ Buffer\ [%n]\     " Buffer number
-    setlocal statusline+=%#BufferAndFiles#\ %m%r%w\           " Modified, readonly, and preview flags
-    setlocal statusline+=%#MiddleBar#\ %<%F\                  " File path
-    setlocal statusline+=%=%#FileSpecs#\ %{&ff}\              " File format
-    setlocal statusline+=%#FileSpecs#\ %{&fenc!=#''?&fenc:&enc}\ " Encoding
-    setlocal statusline+=%#BufferAndFiles#\ %y\               " File type
-    setlocal statusline+=%#ModeShift#\ %l:%c\                 " Line, column, virtual column
-    setlocal statusline+=%#ModeShift#\ %P\                    " Percentage through file
+    setlocal statusline+=%#ModeShift#\ %{ModeIndicator()}\          " Current mode
+    setlocal statusline+=%#BufferAndFiles#\ Buffer\ [%n]\           " Buffer number
+    setlocal statusline+=%#BufferAndFiles#\ %m%r%w\                 " Modified, readonly and preview
+    setlocal statusline+=%#MiddleBar#\ %<%F\                        " File path
+    setlocal statusline+=%=%#FileSpecs#\ %{&ff}\                    " File format
+    setlocal statusline+=%#FileSpecs#\ %{&fenc!=#''?&fenc:&enc}\    " Encoding
+    setlocal statusline+=%#BufferAndFiles#\ %y\                     " File type
+    setlocal statusline+=%#ModeShift#\ %l:%c\                       " Line, column, virtual column
+    setlocal statusline+=%#ModeShift#\ %P\                          " Percentage through file
 endfunction
 
 call SetActiveStatusline()
@@ -109,9 +109,8 @@ if has ("autocmd")
     " Change the statusline for active and inactive windows
     augroup ShiftStatusLine
         autocmd!
-        autocmd WinEnter * call SetActiveStatusline()
-        autocmd BufEnter * call SetActiveStatusline()
-        autocmd WinLeave * setlocal statusline=%#InactiveWindow#\ %<%F\      " File path
+        autocmd WinEnter,BufEnter * call SetActiveStatusline()
+        autocmd WinLeave * setlocal statusline=%#InactiveWindow#\ %<%F\     " File path
     augroup END
 endif
 
