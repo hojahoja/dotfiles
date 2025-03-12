@@ -1,9 +1,10 @@
 alias sudo='sudo ' # Trailing space enables aliases to work with sudo
 alias ff='fastfetch'
 alias ffs='fastfetch -c neofetch -l arch_small' # Default setting for small screens.
-alias filez='du -sh * | sort -n'
+alias filez='du -sh * | sort -h'
 alias vat='bat -pp' # Display file with syntax highlighting
-alias tarzst=tar'tar -I "zstd --ultra -22 -T0" -cvf'
+alias tarzst='tar -I "zstd -11 -T0" -cvf'
+alias tarxz='tar -I "xz -9e" -cvf'
 # Chezmoi shortcuts
 alias che='chezmoi'
 alias chez='chezmoi'
