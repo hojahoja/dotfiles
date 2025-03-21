@@ -1,7 +1,7 @@
 {{- if eq .chezmoi.os "linux" }}
 [".config/nvim/"]
     type = "git-repo"
-    url = "git@github.com:hojahoja/kickstart-modular.nvim.git"
+    url = "https://github.com/hojahoja/kickstart-modular.nvim.git"
     refreshPeriod = "168h"
 {{- end }}
 {{- if eq .chezmoi.os "windows" }}

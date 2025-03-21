@@ -1,5 +1,7 @@
 {{- if eq .chezmoi.os "windows" }}
 .config/tmux/**
+{{- end }}
+{{- if not .zsh }}
 .zshrc
 .p10k.zsh
 .oh-my-zsh/**

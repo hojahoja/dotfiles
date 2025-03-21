@@ -7,22 +7,21 @@ operating system or Linux distributions.
 
 Currently platform differences are configured in:
 
-- .chezmoiignore
-- .chezmoiexternal.toml
-- individual .tmpl files in chezmoi/home directory
+- .chezmoiignore (Decide which templates get ignored)
+- .chezmoiexternal.toml (Downloaded from external source)
+- Individual .tmpl files in chezmoi/home directory
+- ~/.config/chezmoi.toml (Setup correct variables in the data section)
 
 ## Chezmoi commands
 
 Setup on a new machine.
 
 ```sh
-chezmoi init --apply https://github.com/hojahoja/dotfiles.git
+chezmoi init hojahoja
 ```
-
-Or
-
+Or using the direct link to repo
 ```sh
-chezmoi init --apply hojahoja
+chezmoi init https://github.com/hojahoja/dotfiles.git
 ```
 
 - `chezmoi add $FILE` - Add file to managed files in source directory.
@@ -49,12 +48,6 @@ current platform.
 [_"Personal config"_](https://github.com/hojahoja/kickstart-modular.nvim)
 
 [_"Upstream"_](https://github.com/dam9000/kickstart-modular.nvim)
-
-Setup nvim symlinks on linux.
-
-```sh
-stow -t ~/ nvim
-```
 
 ## Additional
 
