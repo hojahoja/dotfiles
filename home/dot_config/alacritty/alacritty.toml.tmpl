@@ -1,0 +1,15 @@
+[general]
+    import = [
+        "~/.config/alacritty/themes/campbell.toml"
+    ]
+
+[window]
+    dimensions = { columns = 80 , lines = 23 }
+    opacity = 0.90
+
+[font]
+    size = 14.0
+{{ if .fish }}
+[terminal]
+    shell = "/usr/bin/fish"
+{{- end }}

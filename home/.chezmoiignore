@@ -1,14 +1,23 @@
+# OS differences
+
 {{- if eq .chezmoi.os "windows" }}
 .config/tmux/**
-{{- end }}
-{{- if not .zsh }}
-.zshrc
-.p10k.zsh
-.oh-my-zsh/**
 {{- end }}
 {{- if eq .chezmoi.os "linux" }}
 .ideavimrc
 {{-     if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
 # WSL specific ignores here.
 {{-     end }}
+{{- end }}
+
+# Shell configs
+{{- if not .zsh }}
+.zshrc
+.p10k.zsh
+.oh-my-zsh/**
+{{- end }}
+
+# Terminal emulators
+{{- if not (eq .terminal "alacritty") }}
+alacritty/**
 {{- end }}
