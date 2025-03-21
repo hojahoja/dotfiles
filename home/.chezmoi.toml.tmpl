@@ -7,6 +7,11 @@
     command = "nvim"
     args = ["-d", "{{"{{ .Destination }}"}}", "{{"{{ .Source }}"}}", "{{"{{ .Target }}"}}"]
 {{- end }}
+{{- if .fish }}
+[cd]
+    command = "fish"
+{{- end }}
+
 [data]
     fish = false
     zsh = false

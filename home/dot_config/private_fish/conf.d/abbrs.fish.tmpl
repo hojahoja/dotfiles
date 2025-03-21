@@ -1,0 +1,30 @@
+abbr --add ff 'fastfetch'
+abbr --add ffs 'fastfetch -c neofetch -l arch_small' # Default setting for small screens.
+abbr --add filez 'du -sh * | sort -h'
+abbr --add vat 'bat -pp' # Display file with syntax highlighting
+abbr --add tarzst 'tar -I "zstd -11 -T0" -cvf'
+abbr --add tarxz 'tar -I "xz -9e" -cvf'
+# Chezmoi shortcuts
+abbr --add che 'chezmoi'
+abbr --add chez 'chezmoi'
+abbr --add ches 'chezmoi status'
+abbr --add ched 'chezmoi diff'
+abbr --add chee 'chezmoi edit'
+abbr --add cheew 'chezmoi edit --watch'
+abbr --add cheea 'chezmoi edit --apply'
+abbr --add chea 'chezmoi apply'
+abbr --add checd 'chezmoi cd'
+{{- if eq .chezmoi.osRelease.id "ubuntu"}}
+# Ubuntu specific
+abbr --add bat 'batcat'
+{{- end }}
+{{- if eq .chezmoi.osRelease.id "arch"}}
+#Quick alternative to pacdiff -f
+abbr --add pacfinder "sudo find /etc -name '*.pacnew' -o -name '*.pacsave'" 
+abbr --add orphans 'pacman -Qtdq'
+# My bootsplash setup hides critical level messages on thinkpad
+# This is a quick way to check if there's anything but that one bugged message
+abbr --add bootcrit 'sudo dmesg --level=crit+'
+# Quick command for for a pretty list for 20 latest commits of VCS /etc Folder
+abbr --add etclog 'sudo git -C /etc log -20 --pretty="format:%C(yellow)%h %Cblue%>(12)%ad %Cgreen%<(7)%aN%Cred%d %Creset%s"'
+{{- end }}
