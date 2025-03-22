@@ -7,13 +7,14 @@ abbr --add tarxz 'tar -I "xz -9e" -cvf'
 # Chezmoi shortcuts
 abbr --add che 'chezmoi'
 abbr --add chez 'chezmoi'
-abbr --add ches 'chezmoi status'
-abbr --add ched 'chezmoi diff'
+abbr --add chea 'chezmoi apply'
+abbr --add checd 'chezmoi cd'
 abbr --add chee 'chezmoi edit'
 abbr --add cheew 'chezmoi edit --watch'
 abbr --add cheea 'chezmoi edit --apply'
-abbr --add chea 'chezmoi apply'
-abbr --add checd 'chezmoi cd'
+abbr --add ched 'chezmoi diff'
+abbr --add ches 'chezmoi status'
+abbr --add chet 'chezmoi execute-template <'
 {{- if eq .chezmoi.osRelease.id "ubuntu"}}
 # Ubuntu specific
 abbr --add bat 'batcat'

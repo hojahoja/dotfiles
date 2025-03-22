@@ -6,6 +6,7 @@
 {{- if eq .chezmoi.os "linux" }}
 .ideavimrc
 {{-     if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
+
 # WSL specific ignores here.
 {{-     end }}
 {{- end }}
@@ -16,8 +17,11 @@
 .p10k.zsh
 .oh-my-zsh/**
 {{- end }}
+{{- if not .fish }}
+.config/fish/**
+{{- end }}
 
 # Terminal emulators
 {{- if not (eq .terminal "alacritty") }}
-alacritty/**
+.config/alacritty/**
 {{- end }}

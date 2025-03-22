@@ -47,4 +47,9 @@ set -g default-shell "/usr/bin/fish"
 # Enable true color support for alacritty
 set -a terminal-features "alacritty:RBG"
 set -a terminal-overrides "alacritty:RGB"
+{{- else if eq .terminal "xterm-256color" }}
+
+# Enable true color support for xterm
+set -a terminal-features "xterm-256color:RBG"
+set -a terminal-overrides "xterm-256color:RGB"
 {{- end }}

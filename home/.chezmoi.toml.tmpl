@@ -6,10 +6,10 @@
 [merge]
     command = "nvim"
     args = ["-d", "{{"{{ .Destination }}"}}", "{{"{{ .Source }}"}}", "{{"{{ .Target }}"}}"]
-{{- end }}
-{{- if .fish }}
-[cd]
-    command = "fish"
+{{- else }}
+# Uncomment to enable fish shell for "chezmoi cd"
+# [cd]
+#    command = "fish"
 {{- end }}
 
 [data]
