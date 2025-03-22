@@ -8,8 +8,13 @@
     opacity = 0.90
 
 [font]
+    normal = { family = "MesloLGS NF", style = "Regular"}
+    bold = { family = "MesloLGS NF", style = "Bold"}
+    italic = { family = "MesloLGS NF", style = "Italic"}
+    bold_italic = { family = "MesloLGS NF", style = "Bold Italic"}
     size = 14.0
-{{ if .fish }}
+{{- if .fish }}
+
 [terminal]
     shell = "/usr/bin/fish"
 {{- end }}
