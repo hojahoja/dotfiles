@@ -10,6 +10,11 @@
 # Uncomment to enable fish shell for "chezmoi cd"
 # [cd]
 #    command = "fish"
+# Ignore the constantly changing hex variables from tide in fish_variables
+# [[textconv]]
+#     pattern = "**/.config/fish/fish_variables"
+#     command = "awk"
+#     args = ["!/SETUVAR _.*/{print}"]
 {{- end }}
 
 [data]
