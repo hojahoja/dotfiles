@@ -25,8 +25,7 @@ set -g focus-events on
 # Vim style copy-mode bindings
 setw -g mode-keys vi
 
-bind y copy-mode
-bind -n C-b copy-mode
+bind b copy-mode
 bind -T copy-mode-vi v send -X begin-selection
 bind -T copy-mode-vi r send -X rectangle-toggle
 {{- if .wayland }}
