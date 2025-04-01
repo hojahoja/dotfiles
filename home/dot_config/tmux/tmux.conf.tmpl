@@ -26,14 +26,17 @@ set -g focus-events on
 setw -g mode-keys vi
 
 bind b copy-mode
+bind å copy-mode
 bind -T copy-mode-vi v send -X begin-selection
 bind -T copy-mode-vi r send -X rectangle-toggle
 {{- if .wayland }}
 bind -T copy-mode-vi y send -X copy-pipe-and-cancel "wl-copy && wl-paste -n | wl-copy -p"
 bind P run "wl-paste -n | tmux load-buffer - ; tmux paste-buffer"
+bind ¨ run "wl-paste -n | tmux load-buffer - ; tmux paste-buffer"
 {{- else }}
 bind -T copy-mode-vi y send -X copy-pipe-and-cancel "xclip -i -sel clip > /dev/null"
 bind P run "xclip -o -sel clip | tmux load-buffer - ; tmux paste-buffer"
+bind ¨ run "xclip -o -sel clip | tmux load-buffer - ; tmux paste-buffer"
 {{- end }}
 {{- if .fish }}
 

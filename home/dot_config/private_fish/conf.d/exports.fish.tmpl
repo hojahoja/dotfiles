@@ -1,0 +1,11 @@
+if status is-interactive
+    # Add to path
+    fish_add_path -g ~/.local/bin/
+
+    # Set color for less
+    set -x LESS '-R --use-color -Dd+c$Du+y$'
+    # Set colored manpages
+    set -x MANPAGER 'less -R --use-color -Dd+c -Du+y'
+    set -x MANROFFOPT '-P -c'
+end
+
