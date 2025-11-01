@@ -1,5 +1,5 @@
 abbr --add ff 'fastfetch'
-abbr --add ffs 'fastfetch -c neofetch -l arch_small' # Default setting for small screens.
+abbr --add ffs 'fastfetch -c neofetch -l small' # Default setting for small screens.
 abbr --add filez 'du -sh * | sort -h'
 abbr --add vat 'bat -pp' # Display file with syntax highlighting
 abbr --add tarzst 'tar -I "zstd -11 -T0" -cvf'
@@ -15,6 +15,9 @@ abbr --add cheea 'chezmoi edit --apply'
 abbr --add ched 'chezmoi diff'
 abbr --add ches 'chezmoi status'
 abbr --add chet 'chezmoi execute-template <'
+abbr --add onedrive 'rclone --vfs-cache-mode full mount onedrive: ~/Sync/onedrive/'
+abbr --add gdrive 'rclone --vfs-cache-mode writes mount gdrive: ~/Sync/google-drive/'
+abbr --add dbox 'rclone --vfs-cache-mode writes mount dropbox: ~/Sync/dropbox/'
 {{- if eq .chezmoi.osRelease.id "ubuntu"}}
 # Ubuntu specific
 abbr --add bat 'batcat'
