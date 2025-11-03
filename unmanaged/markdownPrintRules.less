@@ -7,5 +7,7 @@
     }
     div[class*="admonition"] {
       break-inside: avoid;
+      display: table; /*Bottom edge can still break without this rule */
+      width: 94%; /*Keeps the original width of the box in table mode */
     }
   }
