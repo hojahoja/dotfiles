@@ -2,6 +2,7 @@
 
 {{- if eq .chezmoi.os "windows" }}
 .config/tmux/**
+.local/state/crossnote/**
 {{- end }}
 {{- if eq .chezmoi.os "linux" }}
 .ideavimrc
