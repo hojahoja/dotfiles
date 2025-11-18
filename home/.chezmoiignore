@@ -1,14 +1,22 @@
 # OS differences
 
+# Windows rules
 {{- if eq .chezmoi.os "windows" }}
 .config/tmux/**
 .local/state/crossnote/**
 {{- end }}
+
+# Linux rules
 {{- if eq .chezmoi.os "linux" }}
 .ideavimrc
-{{-     if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
 
-# WSL specific ignores here.
+# WSL specific rules here.
+{{-     if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
+{{-     end }}
+
+# Distro Specific rules here
+{{-     if not (.chezmoi.osRelease.id | contains "opensuse") }}
+.config/fish/functions/suseup.fish
 {{-     end }}
 {{- end }}
 
