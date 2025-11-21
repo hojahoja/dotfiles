@@ -28,6 +28,10 @@ function suseup --description "Fully upgrade system and notify if any of the tra
     _notify "updates.sh" "\nstarting" green
     ~/Misc/scripts/updates.sh
 
+    # Check gear-lever updates (does not update automatically)
+    _notify "Listing available Appimage updates..." "\nstarting" green
+    gearlever --list-updates
+
     # Example use of _check_diff
     # _check_diff ~/Misc/track/pam/ /usr/lib/pam.d/
 end
