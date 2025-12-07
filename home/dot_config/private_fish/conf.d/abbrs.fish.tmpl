@@ -38,8 +38,6 @@ abbr --add bat 'batcat'
 {{- end }}
 {{- if eq .chezmoi.osRelease.id "arch"}}
 # Arch specific
-# Quick alternative to pacdiff -f
-abbr --add pacfinder "sudo find /etc -name '*.pacnew' -o -name '*.pacsave'" 
 abbr --add orphans 'pacman -Qtdq'
 # My bootsplash setup hides critical level messages on thinkpad
 # This is a quick way to check if there's anything but that one bugged message

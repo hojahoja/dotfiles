@@ -1,36 +1,42 @@
-alias sudo='sudo ' # Trailing space enables aliases to work with sudo
-alias ff='fastfetch'
-alias ffs='fastfetch -c neofetch -l arch_small' # Default setting for small screens.
-alias filez='du -sh * | sort -h'
-alias vat='bat -pp' # Display file with syntax highlighting
-alias tarzst='tar -I "zstd -11 -T0" -cvf'
-alias tarxz='tar -I "xz -9e" -cvf'
 # Chezmoi shortcuts
 alias che='chezmoi'
 alias chez='chezmoi'
 alias chea='chezmoi apply'
 alias checd='chezmoi cd'
 alias chee='chezmoi edit'
-alias cheea='chezmoi edit --apply'
 alias cheew='chezmoi edit --watch'
+alias cheea='chezmoi edit --apply'
 alias ched='chezmoi diff'
 alias ches='chezmoi status'
 alias chet='chezmoi execute-template <'
+# Regular Shorcuts
+alias sudo='sudo ' # Trailing space enables aliases to work with sudo
+alias ff='fastfetch'
+alias ffs='fastfetch -c neofetch -l small' # Default setting for small screens.
+alias filez='du -sh * | sort -h'
+alias vat='bat -pp' # Display file with syntax highlighting
+alias tarzst='tar -I "zstd -11 -T0" -cvf'
+alias tarmaxzst='tar -I "zstd --ultra -22 -T0" -cvf'
+alias tarxz='tar -I "xz -9e" -cvf'
+# Rclone shortcuts
+alias onedrive='rclone --vfs-cache-mode full mount onedrive: ~/Sync/onedrive/'
+alias gdrive='rclone --vfs-cache-mode writes mount gdrive: ~/Sync/google-drive/'
+alias dbox='rclone --vfs-cache-mode writes mount dropbox: ~/Sync/dropbox/'
 {{- if eq .chezmoi.osRelease.id "ubuntu"}}
 # Ubuntu specific
 alias bat='batcat'
 {{- end }}
 {{- if eq .chezmoi.osRelease.id "arch"}}
-# The next two work on arch because passwordless
-# has been enabled in wheel group for them specifically.
-alias reboot='sudo reboot'
-alias poweroff='sudo poweroff'
-#Quick alternative to pacdiff -f
-alias pacfinder="sudo find /etc -name '*.pacnew' -o -name '*.pacsave'" 
+# Arch specific
 alias orphans='pacman -Qtdq'
 # My bootsplash setup hides critical level messages on thinkpad
 # This is a quick way to check if there's anything but that one bugged message
 alias bootcrit='sudo dmesg --level=crit+'
 # Quick command for for a pretty list for 20 latest commits of VCS /etc Folder
 alias etclog='sudo git -C /etc log -20 --pretty="format:%C(yellow)%h %Cblue%>(12)%ad %Cgreen%<(7)%aN%Cred%d %Creset%s"'
+{{- end }}
+{{- if (.chezmoi.osRelease.id | contains "opensuse")}}
+# OpenSuse specific
+alias rbt="systemctl reboot"
+alias pof="systemctl poweroff"
 {{- end }}

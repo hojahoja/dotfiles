@@ -50,6 +50,10 @@ nnoremap <Leader><Leader> :ls<CR>:b<Space>
 " Clear search highlight
 nnoremap <silent> <ESC> <ESC>:silent nohlsearch<CR>
 
+" More comfortable and mnemonic mapping for spelling correction
+" [C]hange [S]pelling
+nnoremap <leader>cs z=
+
 
 " Statusline setup
 " Define color highlight groups for statusline
