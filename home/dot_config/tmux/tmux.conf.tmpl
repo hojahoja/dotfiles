@@ -1,6 +1,10 @@
 # Mouse support
 set -g mouse on
 
+# Change the first index for windows and panes from 0 to 1
+set -g base-index 1
+setw -g pane-base-index 1
+
 # Change prefix to C-Space
 unbind C-b
 set -g prefix C-space
